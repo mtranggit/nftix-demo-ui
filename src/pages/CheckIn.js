@@ -63,18 +63,17 @@ function CheckIn({ connectedContract }) {
   };
 
   const handleScan = (data) => {
+    if (!data) return;
     console.log(data);
-    if (data) {
-      const address = data.text.split("ethereum:");
-      setScannedAddress(address[1]);
-      setShowScanner(false);
-      toast({
-        status: "success",
-        variant: "subtle",
-        title: "Captured Address!",
-        description: `${address[1].slice(0, 6)}...${address[1].slice(-4)}`,
-      });
-    }
+    const address = data.text.split("ethereum:");
+    setScannedAddress(address[1]);
+    setShowScanner(false);
+    toast({
+      status: "success",
+      variant: "subtle",
+      title: "Captured Address!",
+      description: `${address[1].slice(0, 6)}...${address[1].slice(-4)}`,
+    });
   };
 
   const handleError = (error) => {
@@ -129,7 +128,7 @@ function CheckIn({ connectedContract }) {
                 size='lg'
                 colorScheme='teal'
               >
-                Check In
+               Scan QR 
               </Button>
             </Flex>
           )}

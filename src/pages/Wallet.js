@@ -15,14 +15,14 @@ function Wallet({ address }) {
   const [ticket, setTicket] = useState(null);
 
   const createTicketDisplay = () => {
-    // if (!ticket) return null;
-    const ticket = {
-      token_id: 1,
-      permalink:
-        "https://rinkeby.rarible.com/token/0xc35f64eeea3446518fb037e50ffa58e7b9a5771d:1?tab=history",
-      image_url:
-        "https://rarible.mypinata.cloud/ipfs/Qmb5QKv979PZsYuXLWiEVqXPJakFXCmEEzpzqnCRfSqvLC",
-    };
+    if (!ticket) return null;
+    // const ticket = {
+    //   token_id: 1,
+    //   permalink:
+    //     "https://rinkeby.rarible.com/token/0xc35f64eeea3446518fb037e50ffa58e7b9a5771d:1?tab=history",
+    //   image_url:
+    //     "https://rarible.mypinata.cloud/ipfs/Qmb5QKv979PZsYuXLWiEVqXPJakFXCmEEzpzqnCRfSqvLC",
+    // };
     // const ticket = {
     //   token_id: 1,
     //   permalink:
@@ -83,7 +83,7 @@ function Wallet({ address }) {
             size='120px'
           />
         )}
-        {!loadingTicket && createTicketDisplay()}
+        {!loadingTicket && ticket && createTicketDisplay()}
         {!loadingTicket && !ticket && (
           <Text fontSize='xl' mb={2} width='100%'>
             You don't own any tickets 😢
