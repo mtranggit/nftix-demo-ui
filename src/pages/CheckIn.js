@@ -9,11 +9,16 @@ function CheckIn({ connectedContract }) {
   const [checkInTxnPending, setCheckInTxnPending] = useState(false);
   const toast = useToast();
 
+  console.log('scannedAddress', scannedAddress);
+
   useEffect(() => {
     const confirmOwnership = async () => {
       try {
         if (!connectedContract) return;
         const res = await connectedContract.confirmOwnership(scannedAddress);
+
+        console.log('ownership res', res);
+        
         setHasTicket(res);
       } catch (error) {
         console.log(error);
@@ -61,7 +66,7 @@ function CheckIn({ connectedContract }) {
     console.log(data);
     if (data) {
       const address = data.text.split("ethereum:");
-      setScannedAddress(address);
+      setScannedAddress(address[1]);
       setShowScanner(false);
       toast({
         status: "success",
@@ -82,6 +87,8 @@ function CheckIn({ connectedContract }) {
     });
     setShowScanner(false);
   };
+
+
 
   return (
     <>
